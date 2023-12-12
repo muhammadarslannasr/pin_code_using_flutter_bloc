@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc_pin_code/pin_code_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_bloc_pin_code/responsive_screen.dart';
 import 'package:flutter_bloc_pin_code/view_model/pin_code_bloc.dart';
 
 void main() {
@@ -25,7 +25,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: const PinCodeScreen(),
+        // home: const PinCodeScreen(),
+        home: const ResponsiveScreen(),
       ),
     );
   }
