@@ -12,7 +12,6 @@ class PinCodeScreen extends StatefulWidget {
 }
 
 class _PinCodeScreenState extends State<PinCodeScreen> {
-
   /// this widget will be use for each digit
   Widget numButton(int number) {
     return Padding(
@@ -62,20 +61,38 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 (index) {
                   return Container(
                     margin: const EdgeInsets.all(6.0),
-                    width: context.watch<PinCodeBloc>().state.isPinVisible ? 50 : 16,
-                    height: context.watch<PinCodeBloc>().state.isPinVisible ? 50 : 16,
+                    width: context.watch<PinCodeBloc>().state.isPinVisible
+                        ? 50
+                        : 16,
+                    height: context.watch<PinCodeBloc>().state.isPinVisible
+                        ? 50
+                        : 16,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(6.0),
-                      color: index < context.watch<PinCodeBloc>().state.enteredPin.length
+                      color: index <
+                              context
+                                  .watch<PinCodeBloc>()
+                                  .state
+                                  .enteredPin
+                                  .length
                           ? context.watch<PinCodeBloc>().state.isPinVisible
                               ? Colors.green
                               : CupertinoColors.activeBlue
                           : CupertinoColors.activeBlue.withOpacity(0.1),
                     ),
-                    child: context.watch<PinCodeBloc>().state.isPinVisible && index < context.watch<PinCodeBloc>().state.enteredPin.length
+                    child: context.watch<PinCodeBloc>().state.isPinVisible &&
+                            index <
+                                context
+                                    .watch<PinCodeBloc>()
+                                    .state
+                                    .enteredPin
+                                    .length
                         ? Center(
                             child: Text(
-                              context.watch<PinCodeBloc>().state.enteredPin[index],
+                              context
+                                  .watch<PinCodeBloc>()
+                                  .state
+                                  .enteredPin[index],
                               style: const TextStyle(
                                 fontSize: 17,
                                 color: Colors.white,
@@ -95,11 +112,16 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                 context.read<PinCodeBloc>().add(PinCodeVisibleInVisibleEvent());
               },
               icon: Icon(
-                context.watch<PinCodeBloc>().state.isPinVisible ? Icons.visibility_off : Icons.visibility,
+                context.watch<PinCodeBloc>().state.isPinVisible
+                    ? Icons.visibility_off
+                    : Icons.visibility,
               ),
             ),
 
-            SizedBox(height: context.watch<PinCodeBloc>().state.isPinVisible ? 50.0 : 8.0),
+            SizedBox(
+                height: context.watch<PinCodeBloc>().state.isPinVisible
+                    ? 50.0
+                    : 8.0),
 
             /// digits
             for (var i = 0; i < 3; i++)
@@ -124,8 +146,9 @@ class _PinCodeScreenState extends State<PinCodeScreen> {
                   numButton(0),
                   TextButton(
                     onPressed: () {
-
-                      context.read<PinCodeBloc>().add(BackSpaceRemovePinCodeEvent());
+                      context
+                          .read<PinCodeBloc>()
+                          .add(BackSpaceRemovePinCodeEvent());
                     },
                     child: const Icon(
                       Icons.backspace,
